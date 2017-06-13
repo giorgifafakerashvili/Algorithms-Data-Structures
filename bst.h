@@ -33,13 +33,20 @@ public:
   // check whether bst contains element or not
   bool contains(const Dtype&);
 
+  // returns two if this and other bsts are
+  // same
+  bool isEqual(const BST<Dtype>& other);
+
 private:
   // Implementaion of helper functions
   std::shared_ptr<Node> insert(std::shared_ptr<Node> root,
                                const Dtype& data);
 
   // Implemenation of contains
-  std::shared_ptr<Node> find(const std::shared_ptr<Node>& root, const Dtype& data); 
+  std::shared_ptr<Node> find(const std::shared_ptr<Node> root, const Dtype& data);
+
+  // IsEqual util
+  bool isEqual(const std::shared_ptr<Node> a, const std::shared_ptr<Node> b);
 };
 
 #endif // _BST_H_

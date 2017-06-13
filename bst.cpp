@@ -1,7 +1,5 @@
 #include "bst.h"
 
-
-
 template<typename Dtype>
 BST<Dtype>::BST() {
   //
@@ -20,6 +18,17 @@ void BST<Dtype>::insert(const Dtype& data) {
     root_ = insert(root_, data);
   }
 }
+
+
+/**
+ * Returns true if finds and element
+ */
+template<typename Dtype>
+bool BST<Dtype>::contains(const Dtype& data) {
+  return find(root_, data) != nullptr;
+}
+
+
 
 
 /***********************************
@@ -45,9 +54,9 @@ typename BST<Dtype>::NodePointer BST<Dtype>::insert(BST<Dtype>::NodePointer root
 
 template<typename Dtype>
 typename BST<Dtype>::NodePointer BST<Dtype>::find(const BST<Dtype>::NodePointer root, const Dtype& data) {
-  if(root == nullptr) return false;
+  if(root == nullptr) return nullptr;
 
-  if(root->data == data) return true;
+  if(root->data == data) return root;
 
   if(data < root->data) return find(root->left, data);
   return find(root->right, data);
